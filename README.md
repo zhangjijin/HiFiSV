@@ -10,7 +10,7 @@ reference.dict:
     sambamba view -h -S --format=bam INPUT.sam > OUTPUT.bam
     sambamba sort  INPUT.bam -o OUTPUT.sort.bam
 #### sam2delta (sam from maf)
-Before the format conversion, we need to adjust the Cigar in the Sam file
+Before the format conversion, we need to adjust the Cigar in the Sam file:
     awk 'BEGIN{OFS="\t"}{if($0~/^@/){print $0}else{gsub(/=/,"M",$6);gsub(/X/,"M",$6);print $0}}'  INPUT.sam > OUTPUT.sam
 then:
     python sam2delta.py INPUT.sam 
