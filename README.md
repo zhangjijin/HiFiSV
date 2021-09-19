@@ -15,4 +15,6 @@ Before the format conversion, we need to adjust the Cigar in the Sam file:
 awk 'BEGIN{OFS="\t"}{if($0~/^@/){print $0}else{gsub(/=/,"M",$6);gsub(/X/,"M",$6);print $0}}'  INPUT.sam > OUTPUT.sam
 ```
 then:
-    python sam2delta.py INPUT.sam 
+```
+python sam2delta.py INPUT.sam 
+```
