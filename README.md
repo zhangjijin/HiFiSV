@@ -1,5 +1,5 @@
 # HiFi_SV
-* [HiFiSV](https://github.com/zhangjijin/HiFi_SV/blob/main/LOGO.png)
+![image](https://github.com/zhangjijin/HiFi_SV/blob/main/LOGO.png)
 A robust pipeline for detecting genome SVs using PacBio HiFi resequencing data.
 ### 01_formatConveert
 A series of scripts for converting to and from the aligned formats. (file formats include output file from LAST, MUMMER, Minimap2 and so on)
