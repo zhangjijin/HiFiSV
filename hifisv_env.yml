@@ -1,0 +1,20 @@
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python >=3.5.3
+  - ngmlr
+  - minimap2
+  - pbmm2
+  - mummer4
+  - last
+  - svim
+  - svim-asm
+  - cutesv
+  - sniffles
+  - pbsv
+  - assemblytics
+  - survivor
+  - sambamba
+  - hifiasm
+  - bedtools
