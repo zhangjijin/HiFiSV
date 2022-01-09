@@ -59,7 +59,7 @@ def minimap2_align(ref,query,threads,sample):
     
 def last_align(ref,query,threads,sample):
     
-    last_1 = 'lastdb -P{threads} -uNEAR -R01 {sample}db {ref}'.format(
+    last_1 = 'lastdb -P{threads} -uNEAR -R01 {sample} {ref}'.format(
         ref = ref,
         sample = sample,
         threads = threads)
