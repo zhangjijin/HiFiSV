@@ -12,10 +12,10 @@ The entire pipeline is designed as follow.
 
 ```
 # Get hifisv source code
-wget -O pipeline-structural-variation.tar.gz https://github.com/nanoporetech/pipeline-structural-variation/archive/v2.0.2.tar.gz
-tar xvzf pipeline-structural-variation.tar.gz
+wget -O hifisv.tar.gz https://github.com/zhangjijin/HiFi_SV/archive/refs/tags/v0.0.1.tar.gz
+tar xvzf hifisv.tar.gz
 # Change to directory
-cd pipeline-structural-variation*
+cd HiFi_SV-0.0.1
 # Create conda environment with all dependencies
 conda env create -n hifisv-env -f hifisv_env.yml
 # Activate environment
@@ -35,15 +35,10 @@ Parameter
 **parameter** | **Description** | **Default**
  -------- | :-----------:  | :-----------: 
  -m/--mode | allrun:Run all pipelines<br>readmode:Only run pipelines through reads mapping<br>contigmode:Only run pipelines through aligning after contigs assembly | allrun
- -------- | :-----------:  | :-----------:
  -r/--reference | The input reference genome fasta file | None
- -------- | :-----------:  | :-----------:
  -f/--fastq | The input Pacbio HiFi ccs fastq file | None
- -------- | :-----------:  | :-----------:
  --min-depth | Minimum number of reads that support a SV | 1
-  -------- | :-----------:  | :-----------:
  -t/--threads | Number of running threads | 1
-  -------- | :-----------:  | :-----------:
   -s/--sample | Sample name | sample
 
 ## Output
