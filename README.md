@@ -1,21 +1,52 @@
-# HiFi_SV
+# HiFiSV
 ![image](https://github.com/zhangjijin/HiFi_SV/blob/main/LOGO.png)
-A robust pipeline for detecting genome SVs using PacBio HiFi resequencing data.
-### 01_formatConveert
-A series of scripts for converting to and from the aligned formats. (file formats include output file from LAST, MUMMER, Minimap2 and so on)
-#### maf2sam
-    maf-convert -f reference.dict sam -r 'ID:ID PL:PL SM:SM' INPUT.maf  > OUTPUT.sam
-reference.dict:
-    java -jar picard.jar CreateSequenceDictionary REFERENCE=INPUT.fa OUTPUT=reference.dict
-#### sam2bam (sam from maf)
-    sambamba view -h -S --format=bam INPUT.sam > OUTPUT.bam
-    sambamba sort  INPUT.bam -o OUTPUT.sort.bam
-#### sam2delta (sam from maf)
-Before the format conversion, we need to adjust the Cigar in the Sam file:
+## Overview
+HiFiSV,a robust and integrative pipeline for detecting genome SVs using PacBio HiFi resequencing data.It is a Python based program, combining 27 genome structural variations (SVs) detection pipelines. 
+This program contains two modes of SVs calling pipelines, one is SVs calling through directly map PacBio ccs reads data to the reference genome, the other is SVs calling through reads assembly and align the assembled contigs to the reference genome. 
+Details of the program are shown below.
+![image](https://github.com/zhangjijin/HiFi_SV/blob/main/overview.png)
+The entire pipeline is designed as follow.
+![image](https://github.com/zhangjijin/HiFi_SV/blob/main/HiFi-SV.png)
+
+## Installation
+
 ```
-awk 'BEGIN{OFS="\t"}{if($0~/^@/){print $0}else{gsub(/=/,"M",$6);gsub(/X/,"M",$6);print $0}}'  INPUT.sam > OUTPUT.sam
+# Get hifisv source code
+wget -O pipeline-structural-variation.tar.gz https://github.com/nanoporetech/pipeline-structural-variation/archive/v2.0.2.tar.gz
+tar xvzf pipeline-structural-variation.tar.gz
+# Change to directory
+cd pipeline-structural-variation*
+# Create conda environment with all dependencies
+conda env create -n hifisv-env -f hifisv_env.yml
+# Activate environment
+conda activate hifisv-env
+# To test if the installation was successful run
+$ python the/path/to/hifiSV.py -h
+# Deactivate environment
+$ conda deactivate
 ```
-then:
+## Introduction
+
+## Usage
 ```
-python sam2delta.py INPUT.sam 
+python the/path/to/hifiSV.py -m <allrun/readmode/contigmode> -r <ref.fasta> -f <query.fastq> <options>
 ```
+Parameter
+**parameter** | **Description** | **Default**
+ -------- | :-----------:  | :-----------: 
+ -m/--mode | allrun:Run all pipelines<br>readmode:Only run pipelines through reads mapping<br>contigmode:Only run pipelines through aligning after contigs assembly | allrun
+ -------- | :-----------:  | :-----------:
+ -r/--reference | The input reference genome fasta file | None
+ -------- | :-----------:  | :-----------:
+ -f/--fastq | The input Pacbio HiFi ccs fastq file | None
+ -------- | :-----------:  | :-----------:
+ --min-depth | Minimum number of reads that support a SV | 1
+  -------- | :-----------:  | :-----------:
+ -t/--threads | Number of running threads | 1
+  -------- | :-----------:  | :-----------:
+  -s/--sample | Sample name | sample
+
+## Output
+All output results are normalized to VCF format and stored in the outputVCF subdirectory of the running directory.
+## Contact
+For advising, bug reporting and requiring help, please post on Github Issue or contact jijinzhang@genetics.ac.cn.
