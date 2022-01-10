@@ -25,7 +25,6 @@ $ python the/path/to/hifiSV.py -h
 # Deactivate environment
 $ conda deactivate
 ```
-## Introduction
 
 ## Usage
 ```
