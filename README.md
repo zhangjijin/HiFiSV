@@ -25,7 +25,6 @@ $ python the/path/to/hifiSV.py -h
 # Deactivate environment
 $ conda deactivate
 ```
-
 ## Usage
 ```
 python the/path/to/hifiSV.py -m <allrun/readmode/contigmode> -r <ref.fasta> -f <query.fastq> <options>
