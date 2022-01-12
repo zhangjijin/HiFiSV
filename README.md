@@ -16,7 +16,7 @@ The entire pipeline is designed as follow.
 wget -O hifisv.tar.gz https://github.com/zhangjijin/HiFi_SV/archive/refs/tags/v0.1.1.tar.gz
 tar xvzf hifisv.tar.gz
 # Change to directory
-cd HiFi_SV-0.0.1
+cd HiFi_SV-0.1.1
 # Create conda environment with all dependencies
 conda env create -n hifisv-env -f hifisv_env.yml
 # Activate environment
