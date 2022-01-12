@@ -74,7 +74,7 @@ def last_align(ref,query,threads,sample):
         threads=threads,
         sample = sample)
     
-    last_4 = 'maf-swap {sample}.last.tmp.maf | awk \'/^s/ {{$2 = (++s % 2 ? "{sample}" : "") $2}} 1\' | last-split -m1 | maf-swap > {sample}.last.maf'.format(
+    last_4 = 'maf-swap {sample}.last.tmp.maf | awk \'/^s/ {{$2 = (++s % 2 ? "{sample}." : "ref.") $2}} 1\' | last-split -m1 | maf-swap > {sample}.last.maf'.format(
         sample = sample)
     
     print("Executing LAST",end='\n',flush=True,file=sys.stderr)
