@@ -1,5 +1,5 @@
 # HiFiSV
-<img width="450" height="200" src="https://github.com/zhangjijin/HiFi_SV/blob/main/LOGO.png"/>
+<img width="450" height="250" src="https://github.com/zhangjijin/HiFi_SV/blob/main/LOGO.png"/>
 
 ## Overview
 HiFiSV,a robust and integrative pipeline for detecting genome SVs using PacBio HiFi resequencing data.It is a Python based program, combining 27 genome structural variations (SVs) detection pipelines. 
